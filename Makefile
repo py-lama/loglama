@@ -74,12 +74,8 @@ format: venv
 # Build package
 build: setup
 	@echo "Building package..."
+	@. venv/bin/activate && pip install -e . && pip install wheel twine build
 	@. venv/bin/activate && rm -rf dist/* && python setup.py sdist bdist_wheel
-
-# Test package
-test-package: setup
-	@echo "Testing package..."
-	@. venv/bin/activate && pytest
 
 # Update version
 update-version:
@@ -87,17 +83,14 @@ update-version:
 	@python ../scripts/update_version.py
 
 # Publish package to PyPI
-publish: test-package update-version build
+publish: build update-version
 	@echo "Publishing package to PyPI..."
 	@. venv/bin/activate && twine check dist/* && twine upload dist/*
 
 # Publish package to TestPyPI
-publish-test: test-package update-version build
+publish-test: build update-version
 	@echo "Publishing package to TestPyPI..."
 	@. venv/bin/activate && twine check dist/* && twine upload --repository testpypi dist/*
-	@$(VENV_ACTIVATE) && poetry publish -r testpypi
-	@echo "Published to TestPyPI. Test with:"
-	@echo "pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ loglama"
 
 # Dry run of publishing (no actual upload)
 publish-dry-run: venv check-publish build

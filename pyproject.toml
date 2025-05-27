@@ -1,10 +1,22 @@
+[build-system]
+requires = [ "poetry-core",]
+build-backend = "poetry.core.masonry.api"
+
 [tool.poetry]
 name = "loglama"
-version = "0.1.4"
+version = "0.1.7"
 description = "Powerful logging and debugging utility for PyLama ecosystem"
-authors = ["Tom Sapletta <info@softreck.dev>"]
+authors = [ "Tom Sapletta <info@softreck.dev>",]
 license = "Apache-2.0"
 readme = "README.md"
+
+[tool.black]
+line-length = 120
+target-version = [ "py310",]
+
+[tool.isort]
+profile = "black"
+line_length = 120
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -18,22 +30,9 @@ pydantic = "^2.11.4"
 colorama = "^0.4.6"
 structlog = "^25.3.0"
 
-
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.5"
 pytest-cov = "^6.1.1"
 black = "^25.1.0"
 isort = "^6.0.1"
 mypy = "^1.15.0"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
-
-[tool.black]
-line-length = 120
-target-version = ['py310']
-
-[tool.isort]
-profile = "black"
-line_length = 120

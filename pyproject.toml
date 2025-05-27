@@ -2,7 +2,8 @@
 name = "loglama"
 version = "0.1.4"
 description = "Powerful logging and debugging utility for PyLama ecosystem"
-authors = ["Tom Sapletta"]
+authors = ["Tom Sapletta <info@softreck.dev>"]
+license = "Apache-2.0"
 readme = "README.md"
 
 [tool.poetry.dependencies]

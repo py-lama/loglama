@@ -10,7 +10,7 @@ LOG_DIR ?= ./logs
 DB_PATH ?= $(LOG_DIR)/loglama.db
 EXAMPLE_DB_PATH ?= $(LOG_DIR)/example.db
 
-.PHONY: all setup venv install test test-unit test-integration test-ansible lint format clean run-api web run-example view-logs run-integration run-examples build publish publish-test check-publish help test-unit-existing test-integration-existing test-existing
+.PHONY: all setup venv install test test-unit test-integration test-ansible lint format clean run-api web run-example view-logs run-integration run-examples build publish publish-test check-publish help test-unit-existing test-integration-existing test-existing test-package update-version
 
 all: help
 
@@ -70,21 +70,31 @@ format: venv
 	@$(VENV_ACTIVATE) && black loglama/
 	@$(VENV_ACTIVATE) && isort loglama/
 
-# Build package with Poetry
-build: venv
-	@echo "Building package with Poetry..."
-	@$(VENV_ACTIVATE) && poetry build
-	@echo "Package built successfully. Artifacts in dist/"
 
-# Check if package is ready for publishing
-check-publish: venv lint-no-mypy test
-	@echo "Checking if package is ready for publishing..."
-	@$(VENV_ACTIVATE) && poetry check
-	@echo "Package is ready for publishing."
+# Build package
+build: setup
+	@echo "Building package..."
+	@. venv/bin/activate && rm -rf dist/* && python setup.py sdist bdist_wheel
 
-# Publish to TestPyPI
-publish-test: venv build
-	@echo "Publishing to TestPyPI..."
+# Test package
+test-package: setup
+	@echo "Testing package..."
+	@. venv/bin/activate && pytest
+
+# Update version
+update-version:
+	@echo "Updating package version..."
+	@python ../scripts/update_version.py
+
+# Publish package to PyPI
+publish: test-package update-version build
+	@echo "Publishing package to PyPI..."
+	@. venv/bin/activate && twine check dist/* && twine upload dist/*
+
+# Publish package to TestPyPI
+publish-test: test-package update-version build
+	@echo "Publishing package to TestPyPI..."
+	@. venv/bin/activate && twine check dist/* && twine upload --repository testpypi dist/*
 	@$(VENV_ACTIVATE) && poetry publish -r testpypi
 	@echo "Published to TestPyPI. Test with:"
 	@echo "pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ loglama"

@@ -220,7 +220,7 @@
         "new": "LOGLAMA_AVAILABLE"
       }
     ],
-    "/home/tom/github/py-lama/pybox/.env": [
+    "/home/tom/github/py-lama/bexy/.env": [
       {
         "type": "env_var",
         "old": "PYLOGS_STRUCTURED_LOGGING",
@@ -237,7 +237,7 @@
         "new": "LOGLAMA_BACKUP_COUNT"
       }
     ],
-    "/home/tom/github/py-lama/pybox/.env.example": [
+    "/home/tom/github/py-lama/bexy/.env.example": [
       {
         "type": "env_var",
         "old": "PYLOGS_STRUCTURED_LOGGING",
@@ -254,7 +254,7 @@
         "new": "LOGLAMA_BACKUP_COUNT"
       }
     ],
-    "/home/tom/github/py-lama/pybox/pybox/logging_config.py": [
+    "/home/tom/github/py-lama/bexy/bexy/logging_config.py": [
       {
         "type": "import",
         "old": "from pylogs",

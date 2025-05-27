@@ -31,7 +31,7 @@ chmod +x bash_example.sh
 
 ### PyLama Integration Example
 
-The `pylama_integration_example.py` script demonstrates how to use LogLama in a script that interacts with other PyLama components like PyLLM and PyBox. It shows how to leverage the centralized environment system to access shared configuration and dependencies.
+The `pylama_integration_example.py` script demonstrates how to use LogLama in a script that interacts with other PyLama components like PyLLM and BEXY. It shows how to leverage the centralized environment system to access shared configuration and dependencies.
 
 ```bash
 python pylama_integration_example.py

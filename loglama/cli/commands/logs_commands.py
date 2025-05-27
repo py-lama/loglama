@@ -552,7 +552,7 @@ def stats():
 def collect(component, all, verbose):
     """Collect logs from other PyLama components and import them into LogLama.
 
-    This command imports logs from WebLama, APILama, PyBox, PyLLM, and other
+    This command imports logs from WebLama, APILama, BEXY, PyLLM, and other
     PyLama components into the central LogLama database.
     """
     # Initialize CLI logger

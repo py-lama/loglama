@@ -83,7 +83,7 @@ _required_env_vars: Dict[str, Set[str]] = {
         "DEBUG_MODE",
     },
     "pyllm": {"OLLAMA_MODEL", "MODELS_DIR"},
-    "pybox": {"PYTHON_PATH"},
+    "bexy": {"PYTHON_PATH"},
 }
 
 
@@ -134,7 +134,7 @@ def get_project_path(project_name: str) -> Optional[Path]:
     Get the path to a specific project within the PyLama ecosystem.
 
     Args:
-        project_name: The name of the project (e.g., "loglama", "pylama", "pyllm", "pybox")
+        project_name: The name of the project (e.g., "loglama", "pylama", "pyllm", "bexy")
 
     Returns:
         Path to the project directory, or None if not found.
@@ -627,8 +627,8 @@ def start_project(
         cmd = [sys.executable, "-m", "pyllm.cli"]
         if args:
             cmd.extend(args)
-    elif project_name == "pybox":
-        cmd = [sys.executable, "-m", "pybox"]
+    elif project_name == "bexy":
+        cmd = [sys.executable, "-m", "bexy"]
         if args:
             cmd.extend(args)
     else:

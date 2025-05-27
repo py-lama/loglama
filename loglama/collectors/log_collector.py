@@ -27,7 +27,7 @@ logger = get_logger("loglama.collectors.log_collector")
 COMPONENT_LOG_PATHS = {
     "weblama": {"db_path": "logs/weblama.db", "log_path": "logs/weblama.log"},
     "apilama": {"db_path": "logs/apilama.db", "log_path": "logs/apilama.log"},
-    "pybox": {"db_path": "logs/pybox.db", "log_path": "logs/pybox.log"},
+    "bexy": {"db_path": "logs/bexy.db", "log_path": "logs/bexy.log"},
     "pyllm": {"db_path": "logs/pyllm.db", "log_path": "logs/pyllm.log"},
     "pylama": {"db_path": "logs/pylama.db", "log_path": "logs/pylama.log"},
 }

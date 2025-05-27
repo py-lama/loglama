@@ -3,7 +3,7 @@
 Example of using LogLama with other PyLama components.
 
 This example demonstrates how to use LogLama in a script that interacts with
-other PyLama components like PyLLM and PyBox, leveraging the centralized
+other PyLama components like PyLLM and BEXY, leveraging the centralized
 environment system.
 """
 
@@ -45,8 +45,8 @@ logger = get_logger("pylama_integration")
 
 
 def check_dependencies():
-    """Check dependencies for PyLLM and PyBox."""
-    logger.info("Checking dependencies for PyLLM and PyBox...")
+    """Check dependencies for PyLLM and BEXY."""
+    logger.info("Checking dependencies for PyLLM and BEXY...")
     
     # Check PyLLM dependencies
     pyllm_success, pyllm_missing, _ = check_project_dependencies("pyllm")
@@ -55,14 +55,14 @@ def check_dependencies():
     else:
         logger.warning(f"Missing PyLLM dependencies: {pyllm_missing}")
     
-    # Check PyBox dependencies
-    pybox_success, pybox_missing, _ = check_project_dependencies("pybox")
-    if pybox_success:
-        logger.info("PyBox dependencies are satisfied")
+    # Check BEXY dependencies
+    bexy_success, bexy_missing, _ = check_project_dependencies("bexy")
+    if bexy_success:
+        logger.info("BEXY dependencies are satisfied")
     else:
-        logger.warning(f"Missing PyBox dependencies: {pybox_missing}")
+        logger.warning(f"Missing BEXY dependencies: {bexy_missing}")
     
-    return pyllm_success and pybox_success
+    return pyllm_success and bexy_success
 
 
 def import_pyllm():

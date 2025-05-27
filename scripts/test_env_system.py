@@ -31,16 +31,16 @@ try:
 except ImportError:
     PYLLM_AVAILABLE = False
 
-# Try to import PyBox modules
+# Try to import BEXY modules
 try:
-    # Add PyBox to the path
-    pybox_path = get_project_path("pybox")
-    if pybox_path:
-        sys.path.append(str(pybox_path))
-    # Import PyBox modules here if needed
-    PYBOX_AVAILABLE = True
+    # Add BEXY to the path
+    bexy_path = get_project_path("bexy")
+    if bexy_path:
+        sys.path.append(str(bexy_path))
+    # Import BEXY modules here if needed
+    BEXY_AVAILABLE = True
 except ImportError:
-    PYBOX_AVAILABLE = False
+    BEXY_AVAILABLE = False
 
 
 def test_central_env_path():

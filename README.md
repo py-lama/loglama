@@ -391,9 +391,9 @@ graph TB
             PL_LOG --> PL_FILE[pylama.log]
         end
         
-        subgraph "PyBox"
+        subgraph "BEXY"
             PB[Sandbox] --> PB_LOG[Logging Module]
-            PB_LOG --> PB_FILE[pybox.log]
+            PB_LOG --> PB_FILE[bexy.log]
         end
         
         subgraph "PyLLM"
@@ -433,7 +433,7 @@ graph TB
 
 ### Component Integration Points
 
-All major ecosystem components (WebLama, APILama, PyLama Core, PyBox, PyLLM) integrate with LogLama by:
+All major ecosystem components (WebLama, APILama, PyLama Core, BEXY, PyLLM) integrate with LogLama by:
 - Using the centralized `.env` configuration
 - Logging to their own log files, which are collected by LogLama
 - Supporting structured, context-aware logging for unified analysis
@@ -458,7 +458,7 @@ graph TB
         WL[WebLama]:::component
         AL[APILama]:::component
         PL[PyLama]:::component
-        PB[PyBox]:::component
+        PB[BEXY]:::component
         PLLM[PyLLM]:::component
     end
     
@@ -912,7 +912,7 @@ Example integrations:
 
 - **WebLama**: Track web requests and user interactions with context-aware logging
 - **APILama**: Log API calls and responses with structured data for debugging
-- **PyBox**: Track file operations and system events with detailed context
+- **BEXY**: Track file operations and system events with detailed context
 - **PyLLM**: Monitor LLM interactions and performance metrics
 
 ## Example Application

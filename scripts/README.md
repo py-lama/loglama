@@ -46,7 +46,7 @@ Example report output:
 Component Status:
 
 apilama         | ✅ Fully integrated
-pybox           | ✅ Fully integrated
+bexy           | ✅ Fully integrated
 pyllm           | ✅ Fully integrated
 pylama          | ✅ Fully integrated
 shellama        | ✅ Fully integrated
@@ -78,7 +78,7 @@ logger = get_logger('your_module')
 The following PyLama ecosystem components have been integrated with LogLama:
 
 1. **APILama**: REST API gateway for the PyLama ecosystem
-2. **PyBox**: Sandbox environment for executing code
+2. **BEXY**: Sandbox environment for executing code
 3. **PyLLM**: LLM service for code generation
 4. **PyLama**: Core component for the PyLama ecosystem
 5. **ShellLama**: Shell command execution service

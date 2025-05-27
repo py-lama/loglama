@@ -349,7 +349,7 @@ def create_app(
                     "icon": "fa-solid fa-brain",
                 },
                 {
-                    "name": "PyBox",
+                    "name": "BEXY",
                     "description": "File storage service for PyLama",
                     "default_port": 8084,
                     "url": f"http://{get_env('HOST', '127.0.0.1')}:8084",

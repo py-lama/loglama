@@ -74,8 +74,8 @@ def extract_component_from_message(message: str) -> Optional[str]:
         return "apilama"
     if "pylama" in message.lower():
         return "pylama"
-    if "pybox" in message.lower():
-        return "pybox"
+    if "bexy" in message.lower():
+        return "bexy"
     if "pyllm" in message.lower():
         return "pyllm"
     if "Docker Container Status" in message:

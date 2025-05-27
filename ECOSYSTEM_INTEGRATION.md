@@ -21,7 +21,7 @@ Ekosystem PyLama składa się z wielu komponentów, które współpracują ze so
 graph TD
     A[WebLama] -->|Logi| E[LogLama]
     B[APILama] -->|Logi| E
-    C[PyBox] -->|Logi| E
+    C[BEXY] -->|Logi| E
     D[PyLLM] -->|Logi| E
     F[PyLama] -->|Logi| E
     E -->|Przeglądanie logów| G[Interfejs Web]
@@ -43,7 +43,7 @@ Jako główny serwis w ekosystemie PyLama, LogLama implementuje architekturę hu
 ```
 +----------------+    +----------------+    +----------------+
 |                |    |                |    |                |
-|    WebLama     |    |    APILama     |    |     PyBox      |
+|    WebLama     |    |    APILama     |    |     BEXY      |
 |                |    |                |    |                |
 +-------+--------+    +-------+--------+    +-------+--------+
         |                     |                     |
@@ -92,7 +92,7 @@ Każdy komponent w ekosystemie PyLama używa strukturalnego logowania z informac
 
 - **WebLama**: Interfejs webowy dla ekosystemu PyLama
 - **APILama**: Usługa API dla ekosystemu PyLama
-- **PyBox**: Środowisko wykonawcze Python w piaskownicy
+- **BEXY**: Środowisko wykonawcze Python w piaskownicy
 - **PyLLM**: Integracja modelu języka Python
 - **PyLama**: Główny silnik generowania i wykonywania kodu Python
 
@@ -229,13 +229,13 @@ PyLama integruje się z systemem logowania w następujących punktach:
 2. **Logowanie modeli**: `pylama/pylama/models.py`
 3. **Przechowywanie logów**: `logs/pylama.log`
 
-### PyBox
+### BEXY
 
-PyBox integruje się z systemem logowania w następujących punktach:
+BEXY integruje się z systemem logowania w następujących punktach:
 
-1. **Konfiguracja logowania**: `pybox/pybox/logging_config.py`
-2. **Logowanie wykonania kodu**: `pybox/pybox/sandbox.py`
-3. **Przechowywanie logów**: `logs/pybox.log`
+1. **Konfiguracja logowania**: `bexy/bexy/logging_config.py`
+2. **Logowanie wykonania kodu**: `bexy/bexy/sandbox.py`
+3. **Przechowywanie logów**: `logs/bexy.log`
 
 ### PyLLM
 

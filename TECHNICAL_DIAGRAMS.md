@@ -24,7 +24,7 @@ graph TB
         WL[WebLama]:::component
         AL[APILama]:::component
         PL[PyLama]:::component
-        PB[PyBox]:::component
+        PB[BEXY]:::component
         PLLM[PyLLM]:::component
     end
     
@@ -81,10 +81,10 @@ graph TB
 |  +------------------+  +------------------+  |
 |                                              |
 |  +------------------+  +------------------+  |
-|  |     PyLama       |  |      PyBox       |  |
+|  |     PyLama       |  |      BEXY       |  |
 |  +------------------+  +------------------+  |
 |  | - logging_config |  | - logging_config |  |
-|  | - pylama.log     |  | - pybox.log      |  |
+|  | - pylama.log     |  | - bexy.log      |  |
 |  +------------------+  +------------------+  |
 |                                              |
 |  +------------------+  +------------------+  |
@@ -218,7 +218,7 @@ flowchart TD
         E[Daemon Kolektora Logu00f3w] --> F[(LogLama DB)]
         G[Pliki Logu00f3w Komponentu00f3w] --> E
         
-        H[PyBox] --> C
+        H[BEXY] --> C
         I[PyLLM] --> C
         J[PyLama] --> C
     end
@@ -243,7 +243,7 @@ sequenceDiagram
     Note over LogLama: Walidacja u015brodowiska
     Note over LogLama: Sprawdzenie zaleu017cnou015bci
     LogLama->>Services: Uruchom usu0142ugi w kolejnou015bci
-    Note over LogLama,Services: 1. LogLama, 2. PyBox, 3. PyLLM, 4. PyLama, 5. APILama, 6. WebLama
+    Note over LogLama,Services: 1. LogLama, 2. BEXY, 3. PyLLM, 4. PyLama, 5. APILama, 6. WebLama
     Services->>LogLama: Status uruchomienia
     LogLama->>CLI: Status wszystkich usu0142ug
     CLI->>User: Wyu015bwietl status
@@ -253,7 +253,7 @@ sequenceDiagram
 
 ```mermaid
 graph TD
-    A[LogLama] -->|Monitoruje| B[PyBox]
+    A[LogLama] -->|Monitoruje| B[BEXY]
     A -->|Monitoruje| C[PyLLM]
     A -->|Monitoruje| D[PyLama]
     A -->|Monitoruje| E[APILama]

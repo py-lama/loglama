@@ -35,9 +35,9 @@ graph TB
             PL_LOG --> PL_FILE[pylama.log]
         end
         
-        subgraph "PyBox"
+        subgraph "BEXY"
             PB[Sandbox] --> PB_LOG[Logging Module]
-            PB_LOG --> PB_FILE[pybox.log]
+            PB_LOG --> PB_FILE[bexy.log]
         end
         
         subgraph "PyLLM"

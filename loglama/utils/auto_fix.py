@@ -567,7 +567,7 @@ def fix_project_environment(
     return results
 
 
-def create_pylogs_config(project_dir: str) -> Dict[str, Any]:
+def create_loglama_config(project_dir: str) -> Dict[str, Any]:
     """Create a LogLama configuration file for a project.
 
     This function will create a loglama.yaml configuration file in the project

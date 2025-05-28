@@ -7,7 +7,7 @@ This script creates sample projects with different logging systems and then runs
 the migration scripts to verify they correctly update them to LogLama.
 
 Usage:
-    python test_migration.py --source pylogs  # Test PyLogs migration
+    python test_migration.py --source loglama  # Test LogLama migration
     python test_migration.py --source logging  # Test standard logging migration
     python test_migration.py --source loguru  # Test Loguru migration
     python test_migration.py --source structlog  # Test structlog migration
@@ -25,38 +25,38 @@ from pathlib import Path
 
 # Sample code for different logging systems
 
-# Sample code with PyLogs references
-PYLOGS_CODE = """
+# Sample code with LogLama references
+LOGLAMA_CODE = """
 #!/usr/bin/env python3
 
-# Import pylogs
-import pylogs
-from pylogs import get_logger, setup_logging
-from pylogs.handlers import SQLiteHandler
-from pylogs.formatters import JSONFormatter
+# Import loglama
+import loglama
+from loglama import get_logger, setup_logging
+from loglama.handlers import SQLiteHandler
+from loglama.formatters import JSONFormatter
 
 # Environment variables
-PYLOGS_LOG_LEVEL = os.environ.get('PYLOGS_LOG_LEVEL', 'INFO')
-PYLOGS_DB_PATH = os.environ.get('PYLOGS_DB_PATH', 'logs.db')
+LOGLAMA_LOG_LEVEL = os.environ.get('LOGLAMA_LOG_LEVEL', 'INFO')
+LOGLAMA_DB_PATH = os.environ.get('LOGLAMA_DB_PATH', 'logs.db')
 
 # Setup logging
 def init_logging():
     # Load environment variables
-    pylogs.load_env(verbose=True)
+    loglama.load_env(verbose=True)
     
     # Create log directory
-    log_dir = pylogs.get_env('PYLOGS_LOG_DIR', './logs')
+    log_dir = loglama.get_env('LOGLAMA_LOG_DIR', './logs')
     os.makedirs(log_dir, exist_ok=True)
     
     # Setup logging
     logger = setup_logging(
-        name="pylogs_example",
-        level=PYLOGS_LOG_LEVEL,
+        name="loglama_example",
+        level=LOGLAMA_LOG_LEVEL,
         console=True,
         file=True,
-        file_path=f"{log_dir}/pylogs_example.log",
+        file_path=f"{log_dir}/loglama_example.log",
         database=True,
-        db_path=PYLOGS_DB_PATH,
+        db_path=LOGLAMA_DB_PATH,
         json_format=True
     )
     
@@ -64,28 +64,28 @@ def init_logging():
 
 # Use LogContext
 def log_with_context():
-    logger = get_logger("pylogs_example")
+    logger = get_logger("loglama_example")
     
-    with pylogs.LogContext(user="test_user", operation="test"):
+    with loglama.LogContext(user="test_user", operation="test"):
         logger.info("This is a log message with context")
 
 # Configuration file paths
-pylogs_config_path = "./pylogs_config.json"
-pylogs_diagnostic_report = "./pylogs_diagnostic_report.json"
+loglama_config_path = "./loglama_config.json"
+loglama_diagnostic_report = "./loglama_diagnostic_report.json"
 
 # Main function
 def main():
     logger = init_logging()
-    logger.info("PyLogs example application started")
+    logger.info("LogLama example application started")
     log_with_context()
     
-    # Create a pylogs_handler
-    pylogs_handler = SQLiteHandler(db_path=PYLOGS_DB_PATH)
+    # Create a loglama_handler
+    loglama_handler = SQLiteHandler(db_path=LOGLAMA_DB_PATH)
     
-    # Create a pylogs_formatter
-    pylogs_formatter = JSONFormatter()
+    # Create a loglama_formatter
+    loglama_formatter = JSONFormatter()
     
-    logger.info("PyLogs example application finished")
+    logger.info("LogLama example application finished")
 
 if __name__ == "__main__":
     main()
@@ -468,12 +468,12 @@ if __name__ == "__main__":
 """
 
 # Sample .env files for different logging systems
-PYLOGS_ENV = """
-# PyLogs configuration
-PYLOGS_LOG_LEVEL=DEBUG
-PYLOGS_LOG_DIR=./logs
-PYLOGS_DB_PATH=./logs/pylogs.db
-PYLOGS_WEB_PORT=8080
+LOGLAMA_ENV = """
+# LogLama configuration
+LOGLAMA_LOG_LEVEL=DEBUG
+LOGLAMA_LOG_DIR=./logs
+LOGLAMA_DB_PATH=./logs/loglama.db
+LOGLAMA_WEB_PORT=8080
 """
 
 LOGGING_ENV = """
@@ -505,9 +505,9 @@ LOG_FORMAT="{timestamp} - {level} - {message}"
 """
 
 # Sample requirements.txt for different logging systems
-PYLOGS_REQUIREMENTS = """
+LOGLAMA_REQUIREMENTS = """
 # Project dependencies
-pylogs>=1.0.0
+loglama>=1.0.0
 flask>=2.0.0
 sqlite3>=3.0.0
 """
@@ -541,31 +541,31 @@ sqlite3>=3.0.0
 """
 
 # Sample README.md files for different logging systems
-PYLOGS_README = """
+LOGLAMA_README = """
 # Sample Project
 
-This is a sample project that uses PyLogs for logging.
+This is a sample project that uses LogLama for logging.
 
 ## Installation
 
 ```bash
-pip install pylogs
+pip install loglama
 ```
 
 ## Usage
 
 ```python
-from pylogs import get_logger
+from loglama import get_logger
 
 logger = get_logger(__name__)
-logger.info("Hello, PyLogs!")
+logger.info("Hello, LogLama!")
 ```
 
 ## Environment Variables
 
-- `PYLOGS_LOG_LEVEL`: The log level (default: INFO)
-- `PYLOGS_LOG_DIR`: The directory to store log files (default: ./logs)
-- `PYLOGS_DB_PATH`: The path to the SQLite database (default: ./logs/pylogs.db)
+- `LOGLAMA_LOG_LEVEL`: The log level (default: INFO)
+- `LOGLAMA_LOG_DIR`: The directory to store log files (default: ./logs)
+- `LOGLAMA_DB_PATH`: The path to the SQLite database (default: ./logs/loglama.db)
 """
 
 LOGGING_README = """
@@ -678,7 +678,7 @@ def create_sample_project(base_dir, source_type):
     
     Args:
         base_dir: The base directory to create the project in
-        source_type: The type of logging system to use (pylogs, logging, loguru, structlog, custom)
+        source_type: The type of logging system to use (loglama, logging, loguru, structlog, custom)
         
     Returns:
         The path to the created project directory
@@ -694,15 +694,15 @@ def create_sample_project(base_dir, source_type):
     os.makedirs(config_dir, exist_ok=True)
     
     # Select the appropriate sample code, env, requirements, and README based on source_type
-    if source_type == "pylogs":
-        code = PYLOGS_CODE
-        env = PYLOGS_ENV
-        requirements = PYLOGS_REQUIREMENTS
-        readme = PYLOGS_README
-        config_file = "pylogs_config.json"
+    if source_type == "loglama":
+        code = LOGLAMA_CODE
+        env = LOGLAMA_ENV
+        requirements = LOGLAMA_REQUIREMENTS
+        readme = LOGLAMA_README
+        config_file = "loglama_config.json"
         config_content = '{"version": "1.0.0", "handlers": ["console", "file", "database"]}' 
-        utils_dir_name = "pylogs_utils"
-        import_stmt = 'from pylogs import get_logger'
+        utils_dir_name = "loglama_utils"
+        import_stmt = 'from loglama import get_logger'
     elif source_type == "logging":
         code = LOGGING_CODE
         env = LOGGING_ENV
@@ -770,8 +770,8 @@ structlog.configure()'''
     
     with open(utils_dir / "helpers.py", "w") as f:
         f.write(f'"""Helper functions for {source_type}."""\n\n{import_stmt}\n\n')
-        if source_type == "pylogs":
-            f.write('logger = get_logger("pylogs_utils")')
+        if source_type == "loglama":
+            f.write('logger = get_logger("loglama_utils")')
         elif source_type == "logging":
             f.write('logger = logging.getLogger("logging_utils")')
         elif source_type == "loguru":
@@ -798,8 +798,8 @@ def run_migration_script(project_dir, script_path, source_type, report_only=True
         The result of running the migration script
     """
     # Determine which script to use based on source_type
-    if source_type == "pylogs":
-        # Use the dedicated PyLogs migrator
+    if source_type == "loglama":
+        # Use the dedicated LogLama migrator
         cmd = [
             sys.executable,
             str(script_path.parent / "migrate_to_loglama.py"),
@@ -884,7 +884,7 @@ def verify_migration(project_dir, source_type):
 def main():
     # Parse command line arguments
     parser = argparse.ArgumentParser(description="Test the LogLama migration tools")
-    parser.add_argument("--source", type=str, choices=["pylogs", "logging", "loguru", "structlog", "custom"],
+    parser.add_argument("--source", type=str, choices=["loglama", "logging", "loguru", "structlog", "custom"],
                         help="The source logging system to test migration from")
     parser.add_argument("--all", action="store_true", help="Test all migration types")
     parser.add_argument("--keep-temp", action="store_true", help="Keep temporary test directories")
@@ -893,24 +893,24 @@ def main():
     
     # Determine which source types to test
     if args.all:
-        source_types = ["pylogs", "logging", "loguru", "structlog", "custom"]
+        source_types = ["loglama", "logging", "loguru", "structlog", "custom"]
     elif args.source:
         source_types = [args.source]
     else:
-        # Default to testing PyLogs migration if no source specified
-        source_types = ["pylogs"]
+        # Default to testing LogLama migration if no source specified
+        source_types = ["loglama"]
     
     # Path to the migration scripts
     script_dir = Path(__file__).parent
     universal_script_path = script_dir / "universal_log_migrator.py"
-    pylogs_script_path = script_dir / "migrate_to_loglama.py"
+    loglama_script_path = script_dir / "migrate_to_loglama.py"
     
     if not universal_script_path.exists():
         print(f"Error: Universal migration script not found at {universal_script_path}")
         return 1
     
-    if not pylogs_script_path.exists():
-        print(f"Error: PyLogs migration script not found at {pylogs_script_path}")
+    if not loglama_script_path.exists():
+        print(f"Error: LogLama migration script not found at {loglama_script_path}")
         return 1
     
     # Create a temporary directory for the tests
@@ -925,7 +925,7 @@ def main():
             project_dir = create_sample_project(temp_dir, source_type)
             
             print(f"Running migration script in report-only mode...")
-            script_path = universal_script_path if source_type != "pylogs" else pylogs_script_path
+            script_path = universal_script_path if source_type != "loglama" else loglama_script_path
             result = run_migration_script(project_dir, script_path, source_type, report_only=True, verbose=True)
             
             if result.returncode != 0:

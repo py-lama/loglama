@@ -20,7 +20,7 @@ if loglama_path.exists():
 
 from loglama.utils.auto_fix import (  # noqa: E402  # type: ignore[attr-defined]
     apply_fixes,
-    create_pylogs_config,
+    create_loglama_config,
     detect_database_issues,
     detect_environment_issues,
     detect_logging_issues,
@@ -327,7 +327,7 @@ def main() -> int:
     # Create configuration file if requested
     if args.config:
         logger.info("Creating LogLama configuration file...")
-        config_results = create_pylogs_config(args.project_dir)
+        config_results = create_loglama_config(args.project_dir)
 
         if config_results["config_file_created"]:
             logger.info(

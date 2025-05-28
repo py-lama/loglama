@@ -9,7 +9,7 @@ Supported source logging systems:
 - Loguru
 - structlog
 - Custom logging implementations
-- PyLogs (already handled by migrate_to_loglama.py)
+- LogLama (already handled by migrate_to_loglama.py)
 
 Usage:
     python universal_log_migrator.py --path /path/to/project --source logging --report-only
@@ -35,7 +35,7 @@ from migrators.logging_migrator import LoggingMigrator
 from migrators.loguru_migrator import LoguruMigrator
 from migrators.structlog_migrator import StructlogMigrator
 from migrators.custom_migrator import CustomMigrator
-from migrators.pylogs_migrator import PylogsMigrator
+from migrators.loglama_migrator import PylogsMigrator
 
 # Constants
 IGNORE_DIRS = {
@@ -45,7 +45,7 @@ IGNORE_DIRS = {
 
 IGNORE_FILES = {
     "universal_log_migrator.py",  # Don't modify this script itself
-    "migrate_to_loglama.py",     # Don't modify the PyLogs migrator
+    "migrate_to_loglama.py",     # Don't modify the LogLama migrator
 }
 
 
@@ -81,7 +81,7 @@ def get_migrator(source_type: str) -> BaseMigrator:
         "loguru": LoguruMigrator(),
         "structlog": StructlogMigrator(),
         "custom": CustomMigrator(),
-        "pylogs": PylogsMigrator()
+        "loglama": PylogsMigrator()
     }
     
     if source_type not in migrators:
@@ -221,7 +221,7 @@ def main():
     parser = argparse.ArgumentParser(description="Migrate from various logging systems to LogLama")
     parser.add_argument("--path", type=str, default=".", help="Path to scan for logging references")
     parser.add_argument("--source", type=str, required=True, 
-                        choices=["logging", "loguru", "structlog", "custom", "pylogs"],
+                        choices=["logging", "loguru", "structlog", "custom", "loglama"],
                         help="Source logging system to migrate from")
     parser.add_argument("--report-only", action="store_true", help="Only report changes, don't modify files")
     parser.add_argument("--verbose", action="store_true", help="Enable verbose output")

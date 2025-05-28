@@ -125,7 +125,7 @@ class FunctionFinder(ast.NodeVisitor):
 
         if include_match and not exclude_match:
             # Check if function already has decorators
-            has_pylogs_decorator = False
+            has_loglama_decorator = False
             for decorator in node.decorator_list:
                 if isinstance(decorator, ast.Call) and hasattr(
                     decorator.func, "id"
@@ -141,7 +141,7 @@ class FunctionFinder(ast.NodeVisitor):
                         "fallback",
                         "timeout",
                     ]:
-                        has_pylogs_decorator = True
+                        has_loglama_decorator = True
                         break
                 elif isinstance(decorator, ast.Name):
                     if decorator.id in [
@@ -155,14 +155,14 @@ class FunctionFinder(ast.NodeVisitor):
                         "fallback",
                         "timeout",
                     ]:
-                        has_pylogs_decorator = True
+                        has_loglama_decorator = True
                         break
 
             self.functions.append(
                 {
                     "name": node.name,
                     "lineno": node.lineno,
-                    "has_pylogs_decorator": has_pylogs_decorator,
+                    "has_loglama_decorator": has_loglama_decorator,
                 }
             )
 
@@ -241,7 +241,7 @@ def apply_decorator_to_file(
 
     # Filter out functions that already have LogLama decorators
     functions_to_modify = [
-        f for f in functions if not f["has_pylogs_decorator"]
+        f for f in functions if not f["has_loglama_decorator"]
     ]
 
     if not functions_to_modify:

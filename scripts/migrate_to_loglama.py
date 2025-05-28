@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
 """
-Migration script to update PyLogs to LogLama across all projects.
+Migration script to update LogLama to LogLama across all projects.
 
 This script will:
-1. Scan repositories for PyLogs dependencies
+1. Scan repositories for LogLama dependencies
 2. Update import statements, variable names, and function calls
 3. Update environment variables and configuration files
 4. Generate a report of changes made
@@ -24,19 +24,19 @@ import shutil
 import datetime
 
 # Constants
-PYLOGS_PATTERNS = {
-    "imports": r"(from|import)\s+(pylogs|pylogs\.[\w\.]+)",
-    "function_calls": r"([\w\.]+)?(pylogs[\w\.]*)\.([\w\.]+)",
-    "variable_names": r"([^\w])(pylogs[\w]*)",
-    "logger_names": r'"(pylogs[\w_]*)"\''
+LOGLAMA_PATTERNS = {
+    "imports": r"(from|import)\s+(loglama|loglama\.[\w\.]+)",
+    "function_calls": r"([\w\.]+)?(loglama[\w\.]*)\.([\w\.]+)",
+    "variable_names": r"([^\w])(loglama[\w]*)",
+    "logger_names": r'"(loglama[\w_]*)"\''
 }
 
-ENV_VAR_PATTERN = r"([^\w])(PYLOGS_[\w_]*)"
-CONFIG_FILE_PATTERN = r"(pylogs[\w_]*\.(?:json|yaml|yml|ini|conf|cfg|toml))"
+ENV_VAR_PATTERN = r"([^\w])(LOGLAMA_[\w_]*)"
+CONFIG_FILE_PATTERN = r"(loglama[\w_]*\.(?:json|yaml|yml|ini|conf|cfg|toml))"
 
 REPLACEMENT_MAP = {
-    "pylogs": "loglama",
-    "PYLOGS": "LOGLAMA"
+    "loglama": "loglama",
+    "LOGLAMA": "LOGLAMA"
 }
 
 IGNORE_DIRS = {
@@ -128,7 +128,7 @@ def is_text_file(path: Path) -> bool:
 
 
 def scan_file(file_path: Path, report: MigrationReport, report_only: bool, verbose: bool) -> bool:
-    """Scan a file for PyLogs references and update them."""
+    """Scan a file for LogLama references and update them."""
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
@@ -142,10 +142,10 @@ def scan_file(file_path: Path, report: MigrationReport, report_only: bool, verbo
     modified = False
     
     # Process imports
-    for match in re.finditer(PYLOGS_PATTERNS["imports"], content):
+    for match in re.finditer(LOGLAMA_PATTERNS["imports"], content):
         import_stmt = match.group(0)
         module = match.group(2)
-        new_module = module.replace("pylogs", "loglama")
+        new_module = module.replace("loglama", "loglama")
         new_import_stmt = import_stmt.replace(module, new_module)
         
         if verbose:
@@ -156,10 +156,10 @@ def scan_file(file_path: Path, report: MigrationReport, report_only: bool, verbo
         modified = True
     
     # Process function calls
-    for match in re.finditer(PYLOGS_PATTERNS["function_calls"], content):
+    for match in re.finditer(LOGLAMA_PATTERNS["function_calls"], content):
         full_match = match.group(0)
         module = match.group(2)
-        new_module = module.replace("pylogs", "loglama")
+        new_module = module.replace("loglama", "loglama")
         new_call = full_match.replace(module, new_module)
         
         if verbose:
@@ -170,10 +170,10 @@ def scan_file(file_path: Path, report: MigrationReport, report_only: bool, verbo
         modified = True
     
     # Process variable names
-    for match in re.finditer(PYLOGS_PATTERNS["variable_names"], content):
+    for match in re.finditer(LOGLAMA_PATTERNS["variable_names"], content):
         prefix = match.group(1)  # Capture the character before the variable name
         var_name = match.group(2)
-        new_var_name = var_name.replace("pylogs", "loglama")
+        new_var_name = var_name.replace("loglama", "loglama")
         full_match = prefix + var_name
         new_match = prefix + new_var_name
         
@@ -185,9 +185,9 @@ def scan_file(file_path: Path, report: MigrationReport, report_only: bool, verbo
         modified = True
     
     # Process logger names
-    for match in re.finditer(PYLOGS_PATTERNS["logger_names"], content):
+    for match in re.finditer(LOGLAMA_PATTERNS["logger_names"], content):
         logger_name = match.group(1)
-        new_logger_name = logger_name.replace("pylogs", "loglama")
+        new_logger_name = logger_name.replace("loglama", "loglama")
         full_match = f'"{logger_name}"'
         new_match = f'"{new_logger_name}"'
         
@@ -202,7 +202,7 @@ def scan_file(file_path: Path, report: MigrationReport, report_only: bool, verbo
     for match in re.finditer(ENV_VAR_PATTERN, content):
         prefix = match.group(1)  # Capture the character before the env var
         env_var = match.group(2)
-        new_env_var = env_var.replace("PYLOGS_", "LOGLAMA_")
+        new_env_var = env_var.replace("LOGLAMA_", "LOGLAMA_")
         full_match = prefix + env_var
         new_match = prefix + new_env_var
         
@@ -225,15 +225,15 @@ def scan_file(file_path: Path, report: MigrationReport, report_only: bool, verbo
 
 
 def rename_files(base_path: Path, report: MigrationReport, report_only: bool, verbose: bool):
-    """Rename files containing 'pylogs' in their name."""
+    """Rename files containing 'loglama' in their name."""
     for root, dirs, files in os.walk(base_path):
         # Skip ignored directories
         dirs[:] = [d for d in dirs if d not in IGNORE_DIRS]
         
         for file in files:
-            if "pylogs" in file.lower():
+            if "loglama" in file.lower():
                 old_path = Path(root) / file
-                new_file = file.replace("pylogs", "loglama").replace("PyLogs", "LogLama")
+                new_file = file.replace("loglama", "loglama").replace("LogLama", "LogLama")
                 new_path = Path(root) / new_file
                 
                 if verbose:
@@ -248,7 +248,7 @@ def rename_files(base_path: Path, report: MigrationReport, report_only: bool, ve
 
 
 def rename_directories(base_path: Path, report: MigrationReport, report_only: bool, verbose: bool):
-    """Rename directories containing 'pylogs' in their name."""
+    """Rename directories containing 'loglama' in their name."""
     # We need to process directories from deepest to shallowest to avoid renaming issues
     all_dirs = []
     
@@ -257,14 +257,14 @@ def rename_directories(base_path: Path, report: MigrationReport, report_only: bo
         dirs[:] = [d for d in dirs if d not in IGNORE_DIRS]
         
         for dir_name in dirs:
-            if "pylogs" in dir_name.lower():
+            if "loglama" in dir_name.lower():
                 all_dirs.append(Path(root) / dir_name)
     
     # Sort by depth (deepest first)
     all_dirs.sort(key=lambda p: len(p.parts), reverse=True)
     
     for old_dir in all_dirs:
-        new_dir_name = old_dir.name.replace("pylogs", "loglama").replace("PyLogs", "LogLama")
+        new_dir_name = old_dir.name.replace("loglama", "loglama").replace("LogLama", "LogLama")
         new_dir = old_dir.parent / new_dir_name
         
         if verbose:
@@ -297,8 +297,8 @@ def process_directory(base_path: Path, report: MigrationReport, report_only: boo
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Migrate from PyLogs to LogLama across projects")
-    parser.add_argument("--path", type=str, default=".", help="Path to scan for PyLogs references")
+    parser = argparse.ArgumentParser(description="Migrate from LogLama to LogLama across projects")
+    parser.add_argument("--path", type=str, default=".", help="Path to scan for LogLama references")
     parser.add_argument("--report-only", action="store_true", help="Only report changes, don't modify files")
     parser.add_argument("--verbose", action="store_true", help="Enable verbose output")
     parser.add_argument("--output", type=str, default="migration_report.json", help="Output file for the migration report")
@@ -312,7 +312,7 @@ def main():
         print(f"Error: Path {base_path} does not exist")
         return 1
     
-    print(f"{'Analyzing' if args.report_only else 'Migrating'} PyLogs to LogLama in {base_path}")
+    print(f"{'Analyzing' if args.report_only else 'Migrating'} LogLama to LogLama in {base_path}")
     
     # First scan and update file contents
     process_directory(base_path, report, args.report_only, args.verbose)

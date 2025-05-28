@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
 """
-Compatibility layer for transitioning from PyLogs to LogLama.
+Compatibility layer for transitioning from LogLama to LogLama.
 
 This module provides compatibility functions and classes to help projects
-transition from PyLogs to LogLama without breaking existing code.
+transition from LogLama to LogLama without breaking existing code.
 
 Example usage:
     # Instead of importing directly from loglama or loglama
@@ -12,7 +12,7 @@ Example usage:
 
     # Then use as normal
     logger = get_logger(__name__)
-    logger.info("This works with both PyLogs and LogLama!")
+    logger.info("This works with both LogLama and LogLama!")
 """
 
 import importlib.util

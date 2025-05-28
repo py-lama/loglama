@@ -122,7 +122,7 @@ Replace `COMPONENT` with your component name (e.g., `APILAMA`, `WEBLAMA`, etc.).
 
 ## migrate_to_loglama.py
 
-This script helps you migrate projects from PyLogs to LogLama. It will automatically update import statements, variable names, function calls, environment variables, and file names.
+This script helps you migrate projects from LogLama to LogLama. It will automatically update import statements, variable names, function calls, environment variables, and file names.
 
 ### Usage
 
@@ -300,7 +300,7 @@ For a comprehensive migration guide, see the [MIGRATION_GUIDE.md](./MIGRATION_GU
 
 ### Compatibility Layer
 
-If you need to maintain compatibility with both PyLogs and LogLama during a transition period, you can use the compatibility layer provided in `loglama.compat`.
+If you need to maintain compatibility with both LogLama and LogLama during a transition period, you can use the compatibility layer provided in `loglama.compat`.
 
 ```python
 # Instead of importing directly from loglama or loglama
@@ -308,7 +308,7 @@ from loglama.compat import get_logger, setup_logging, LogContext
 
 # Then use as normal
 logger = get_logger(__name__)
-logger.info("This works with both PyLogs and LogLama!")
+logger.info("This works with both LogLama and LogLama!")
 ```
 
 ## universal_log_migrator.py
@@ -321,7 +321,7 @@ This script provides a comprehensive solution for migrating projects from variou
 - **Loguru**: A popular third-party logging library
 - **structlog**: A structured logging library
 - **Custom logging implementations**: Detects and migrates common custom logging patterns
-- **PyLogs**: Uses the migrate_to_loglama.py script for PyLogs migration
+- **LogLama**: Uses the migrate_to_loglama.py script for LogLama migration
 
 ### Usage
 
@@ -338,8 +338,8 @@ python universal_log_migrator.py --path /path/to/your/project --source structlog
 # Migrate from a custom logging implementation
 python universal_log_migrator.py --path /path/to/your/project --source custom
 
-# Migrate from PyLogs
-python universal_log_migrator.py --path /path/to/your/project --source pylogs
+# Migrate from LogLama
+python universal_log_migrator.py --path /path/to/your/project --source loglama
 
 # Run in report-only mode to see what would change without making any changes
 python universal_log_migrator.py --path /path/to/your/project --source logging --report-only

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
 """
-Migrator for PyLogs.
+Migrator for LogLama.
 
-This migrator converts code using PyLogs to use LogLama instead.
+This migrator converts code using LogLama to use LogLama instead.
 It's a wrapper around the migrate_to_loglama.py script.
 """
 
@@ -18,16 +18,16 @@ from .base_migrator import BaseMigrator, MigrationReport
 
 
 class PylogsMigrator(BaseMigrator):
-    """Migrator for PyLogs.
+    """Migrator for LogLama.
     
     This is a wrapper around the migrate_to_loglama.py script.
     """
     
     def __init__(self):
         super().__init__()
-        self.name = "pylogs"
-        self.file_patterns = [r"pylogs[_\-]?config\.py", r"log[_\-]?config\.py"]
-        self.dir_patterns = [r"pylogs"]
+        self.name = "loglama"
+        self.file_patterns = [r"loglama[_\-]?config\.py", r"log[_\-]?config\.py"]
+        self.dir_patterns = [r"loglama"]
         
         # Import the migrate_to_loglama module dynamically
         self.migrate_module = None
@@ -44,7 +44,7 @@ class PylogsMigrator(BaseMigrator):
             print(f"Warning: Could not import migrate_to_loglama.py: {e}")
     
     def migrate_content(self, content: str, file_path: Path, report: MigrationReport, verbose: bool) -> str:
-        """Migrate PyLogs references in the content.
+        """Migrate LogLama references in the content.
         
         This delegates to the migrate_to_loglama.py script's functionality.
         """
@@ -57,40 +57,40 @@ class PylogsMigrator(BaseMigrator):
             migrated_content = content
             
             # Update imports
-            for match in re.finditer(self.migrate_module.PYLOGS_PATTERNS["imports"], content):
+            for match in re.finditer(self.migrate_module.LOGLAMA_PATTERNS["imports"], content):
                 import_stmt = match.group(0)
                 module = match.group(2)
-                new_module = module.replace("pylogs", "loglama")
+                new_module = module.replace("loglama", "loglama")
                 new_import = import_stmt.replace(module, new_module)
                 
                 report.add_change(str(file_path), "import", import_stmt, new_import)
                 migrated_content = migrated_content.replace(import_stmt, new_import)
             
             # Update from imports
-            for match in re.finditer(self.migrate_module.PYLOGS_PATTERNS["from_imports"], content):
+            for match in re.finditer(self.migrate_module.LOGLAMA_PATTERNS["from_imports"], content):
                 import_stmt = match.group(0)
                 module = match.group(1)
-                new_module = module.replace("pylogs", "loglama")
+                new_module = module.replace("loglama", "loglama")
                 new_import = import_stmt.replace(module, new_module)
                 
                 report.add_change(str(file_path), "from_import", import_stmt, new_import)
                 migrated_content = migrated_content.replace(import_stmt, new_import)
             
             # Update environment variables
-            for match in re.finditer(self.migrate_module.PYLOGS_PATTERNS["env_vars"], content):
+            for match in re.finditer(self.migrate_module.LOGLAMA_PATTERNS["env_vars"], content):
                 env_var = match.group(0)
                 var_name = match.group(1)
-                new_var_name = var_name.replace("PYLOGS", "LOGLAMA")
+                new_var_name = var_name.replace("LOGLAMA", "LOGLAMA")
                 new_env_var = env_var.replace(var_name, new_var_name)
                 
                 report.add_change(str(file_path), "env_var", env_var, new_env_var)
                 migrated_content = migrated_content.replace(env_var, new_env_var)
             
             # Update config keys
-            for match in re.finditer(self.migrate_module.PYLOGS_PATTERNS["config_keys"], content):
+            for match in re.finditer(self.migrate_module.LOGLAMA_PATTERNS["config_keys"], content):
                 config_key = match.group(0)
                 key_name = match.group(1)
-                new_key_name = key_name.replace("pylogs", "loglama")
+                new_key_name = key_name.replace("loglama", "loglama")
                 new_config_key = config_key.replace(key_name, new_key_name)
                 
                 report.add_change(str(file_path), "config_key", config_key, new_config_key)
@@ -103,7 +103,7 @@ class PylogsMigrator(BaseMigrator):
     
     def get_renamed_file(self, file_name: str) -> str:
         """Get the new name for a file."""
-        if re.search(r"pylogs[_\-]?config\.py", file_name, re.IGNORECASE):
+        if re.search(r"loglama[_\-]?config\.py", file_name, re.IGNORECASE):
             return "logging_config.py"
         elif re.search(r"log[_\-]?config\.py", file_name, re.IGNORECASE):
             return "logging_config.py"
@@ -111,7 +111,7 @@ class PylogsMigrator(BaseMigrator):
     
     def get_renamed_directory(self, dir_name: str) -> str:
         """Get the new name for a directory."""
-        if dir_name.lower() == "pylogs":
+        if dir_name.lower() == "loglama":
             return "logging"
         return dir_name
     
@@ -121,7 +121,7 @@ class PylogsMigrator(BaseMigrator):
         config_files = []
         for root, _, files in os.walk(base_path):
             for file in files:
-                if re.search(r"pylogs[_\-]?config\.py", file, re.IGNORECASE) or \
+                if re.search(r"loglama[_\-]?config\.py", file, re.IGNORECASE) or \
                    re.search(r"log[_\-]?config\.py", file, re.IGNORECASE):
                     config_files.append(Path(root) / file)
         

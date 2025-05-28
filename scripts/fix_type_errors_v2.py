@@ -126,9 +126,9 @@ def fix_specific_errors():
         with open(file_path, 'r', encoding='utf-8') as file:
             content = file.read()
         
-        # Replace create_loglama_config with create_pylogs_config
+        # Replace create_loglama_config with create_loglama_config
         if "create_loglama_config" in content:
-            content = content.replace("create_loglama_config", "create_pylogs_config")
+            content = content.replace("create_loglama_config", "create_loglama_config")
             with open(file_path, 'w', encoding='utf-8') as file:
                 file.write(content)
             print(f"Fixed create_loglama_config attribute error in {file_path}")

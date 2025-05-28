@@ -1,14 +1,14 @@
-# PyLogs to LogLama Migration Guide
+# LogLama to LogLama Migration Guide
 
-This guide provides instructions for migrating projects from PyLogs to LogLama.
+This guide provides instructions for migrating projects from LogLama to LogLama.
 
 ## Overview
 
-The PyLogs package has been renamed to LogLama to better align with the PyLama ecosystem naming convention. This guide will help you update your projects to use the new package name.
+The LogLama package has been renamed to LogLama to better align with the PyLama ecosystem naming convention. This guide will help you update your projects to use the new package name.
 
 ## Automated Migration
 
-We've provided a migration script that can automatically update your codebase to use LogLama instead of PyLogs.
+We've provided a migration script that can automatically update your codebase to use LogLama instead of LogLama.
 
 ### Using the Migration Script
 
@@ -62,13 +62,13 @@ If you prefer to manually update your code or if the migration script doesn't ca
 
 ### 4. Documentation Updates
 
-- [ ] Update README files to reference LogLama instead of PyLogs
+- [ ] Update README files to reference LogLama instead of LogLama
 - [ ] Update code examples in documentation
 - [ ] Update API documentation references
 
 ## Compatibility Layer
 
-If you need to maintain compatibility with both PyLogs and LogLama during a transition period, you can use the following pattern:
+If you need to maintain compatibility with both LogLama and LogLama during a transition period, you can use the following pattern:
 
 ```python
 try:

@@ -9,7 +9,7 @@ This example demonstrates how to run LogLama and Grafana together using Docker C
 ## Usage
 
 1. Clone this repository or copy the example directory.
-2. Place a valid `.env` file for LogLama as `pylama.env` in this directory if needed.
+2. Place a valid `.env` file for LogLama as `devlama.env` in this directory if needed.
 3. Start the services:
    ```bash
    docker compose up -d

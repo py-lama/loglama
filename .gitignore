@@ -12,7 +12,7 @@ fixed_script.py
 generated_script.py
 ollama_raw_response.json
 screenshot.png
-.pylama
+.devlama
 models.json
 .idea
 venv

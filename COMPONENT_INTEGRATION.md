@@ -32,7 +32,7 @@ graph TB
         
         subgraph "PyLama Core"
             PL[Core Engine] --> PL_LOG[Logging Module]
-            PL_LOG --> PL_FILE[pylama.log]
+            PL_LOG --> PL_FILE[devlama.log]
         end
         
         subgraph "BEXY"

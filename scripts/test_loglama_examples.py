@@ -85,7 +85,7 @@ def test_python_examples() -> Dict[str, bool]:
         "basic_python_example.py",
         "example_app.py",
         "multilanguage_standalone.py",  # Use the standalone version
-        "pylama_integration_standalone.py",  # Use the standalone version
+        "devlama_integration_standalone.py",  # Use the standalone version
         "simple_python_example.py",
         "standalone_example.py"
     ]

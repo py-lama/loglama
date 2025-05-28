@@ -250,9 +250,9 @@ run-simple-bash-web-example: setup
 	@$(VENV_ACTIVATE) && bash examples/simple_bash_example.sh --web
 
 # Run PyLama integration example
-run-pylama-integration-example: setup
+run-devlama-integration-example: setup
 	@echo "Running PyLama integration example..."
-	@$(VENV_ACTIVATE) && python examples/pylama_integration_example.py
+	@$(VENV_ACTIVATE) && python examples/devlama_integration_example.py
 
 # Run multi-component workflow example
 run-multi-component-example: setup
@@ -390,7 +390,7 @@ help:
 	@echo "  make run-simple-python-web-example - Run simple Python example with web interface"
 	@echo "  make run-simple-bash-example - Run simple bash example with simplified interface"
 	@echo "  make run-simple-bash-web-example - Run simple bash example with web interface"
-	@echo "  make run-pylama-integration-example - Run PyLama integration example"
+	@echo "  make run-devlama-integration-example - Run PyLama integration example"
 	@echo "  make run-multi-component-example - Run multi-component workflow example"
 	@echo "  make run-grafana-example - Run LogLama + Grafana Docker Compose example"
 	@echo "  make stop-grafana-example - Stop LogLama + Grafana Docker Compose example"

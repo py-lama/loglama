@@ -68,7 +68,7 @@ _required_env_vars: Dict[str, Set[str]] = {
         "LOGLAMA_MAX_LOG_SIZE",
         "LOGLAMA_BACKUP_COUNT",
     },
-    "pylama": {
+    "devlama": {
         "OLLAMA_MODEL",
         "OLLAMA_FALLBACK_MODELS",
         "OLLAMA_AUTO_SELECT_MODEL",
@@ -87,7 +87,7 @@ _required_env_vars: Dict[str, Set[str]] = {
 }
 
 
-def find_pylama_root() -> Path:
+def find_devlama_root() -> Path:
     """
     Find the PyLama project root directory.
 
@@ -110,11 +110,11 @@ def find_pylama_root() -> Path:
     # If not found, look for the directory structure
     while current_dir != current_dir.parent:  # Stop at the root directory
         # Check if this looks like the py-lama directory
-        if (current_dir / "pylama").exists() and (
+        if (current_dir / "devlama").exists() and (
             current_dir / "loglama"
         ).exists():
             return current_dir
-        if (current_dir / "pylama").exists() and (
+        if (current_dir / "devlama").exists() and (
             current_dir / "getllm"
         ).exists():
             return current_dir
@@ -134,7 +134,7 @@ def get_project_path(project_name: str) -> Optional[Path]:
     Get the path to a specific project within the PyLama ecosystem.
 
     Args:
-        project_name: The name of the project (e.g., "loglama", "pylama", "getllm", "bexy")
+        project_name: The name of the project (e.g., "loglama", "devlama", "getllm", "bexy")
 
     Returns:
         Path to the project directory, or None if not found.
@@ -144,16 +144,16 @@ def get_project_path(project_name: str) -> Optional[Path]:
         return _project_paths_cache[project_name]
 
     # Find the PyLama root directory
-    pylama_root = find_pylama_root()
+    devlama_root = find_devlama_root()
 
     # Check if the project directory exists directly
-    project_dir = pylama_root / project_name
+    project_dir = devlama_root / project_name
     if project_dir.exists() and project_dir.is_dir():
         _project_paths_cache[project_name] = project_dir
         return project_dir
 
     # Check if it's a symlink
-    symlink_path = pylama_root / f"{project_name}-link"
+    symlink_path = devlama_root / f"{project_name}-link"
     if symlink_path.exists():
         target = symlink_path.resolve()
         if target.exists() and target.is_dir():
@@ -162,7 +162,7 @@ def get_project_path(project_name: str) -> Optional[Path]:
 
     # Try to find it using pyproject.toml if available
     if TOML_AVAILABLE:
-        for subdir in pylama_root.iterdir():
+        for subdir in devlama_root.iterdir():
             if not subdir.is_dir():
                 continue
 
@@ -197,8 +197,8 @@ def get_central_env_path() -> Path:
     Returns:
         Path to the central .env file.
     """
-    pylama_root = find_pylama_root()
-    return pylama_root / "pylama" / ".env"
+    devlama_root = find_devlama_root()
+    return devlama_root / "devlama" / ".env"
 
 
 def load_central_env(override: bool = True) -> bool:
@@ -619,8 +619,8 @@ def start_project(
             cmd.extend(args)
         else:
             cmd.extend(["web"])
-    elif project_name == "pylama":
-        cmd = [sys.executable, "pylama.py"]
+    elif project_name == "devlama":
+        cmd = [sys.executable, "devlama.py"]
         if args:
             cmd.extend(args)
     elif project_name == "getllm":

@@ -5,7 +5,7 @@
 # that involves multiple components and scripts
 
 # Set the path to the PyLama root directory
-PYLAMA_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../../" && pwd)"
+DEVLAMA_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../../" && pwd)"
 EXAMPLE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Function to log a message using LogLama
@@ -15,13 +15,13 @@ log_message() {
     local component="${3:-workflow_manager}"
     
     # Use Python to call LogLama's logger
-    python3 -c "import sys; sys.path.append('$PYLAMA_ROOT'); from loglama.core.logger import get_logger; logger = get_logger('$component'); logger.$level('$message')" 
+    python3 -c "import sys; sys.path.append('$DEVLAMA_ROOT'); from loglama.core.logger import get_logger; logger = get_logger('$component'); logger.$level('$message')"
 }
 
 # Function to initialize LogLama environment
 initialize_loglama() {
     echo "Initializing LogLama environment..."
-    python3 -c "import sys; sys.path.append('$PYLAMA_ROOT'); from loglama.core.env_manager import load_central_env, ensure_required_env_vars; load_central_env(); ensure_required_env_vars()"
+    python3 -c "import sys; sys.path.append('$DEVLAMA_ROOT'); from loglama.core.env_manager import load_central_env, ensure_required_env_vars; load_central_env(); ensure_required_env_vars()"
     echo "LogLama environment initialized"
 }
 

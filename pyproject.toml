@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "loglama"
-version = "0.1.8"
+version = "0.1.9"
 description = "Powerful logging and debugging utility for PyLama ecosystem"
 authors = [ "Tom Sapletta <info@softreck.dev>",]
 license = "Apache-2.0"

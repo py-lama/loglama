@@ -4,7 +4,7 @@
 # This script demonstrates how to use LogLama's CLI to log messages from Bash
 
 # Set the path to the PyLama root directory
-PYLAMA_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+DEVLAMA_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 
 # Function to log a message using LogLama
 log_message() {
@@ -19,10 +19,10 @@ import sys, os
 from pathlib import Path
 
 # Add PyLama root directory
-sys.path.append('$PYLAMA_ROOT')
+sys.path.append('$DEVLAMA_ROOT')
 
 # Add LogLama directory
-loglama_dir = os.path.join('$PYLAMA_ROOT', 'loglama')
+loglama_dir = os.path.join('$DEVLAMA_ROOT', 'loglama')
 sys.path.append(loglama_dir)
 
 # Import logger and log message
@@ -41,10 +41,10 @@ import sys, os
 from pathlib import Path
 
 # Add PyLama root directory
-sys.path.append('$PYLAMA_ROOT')
+sys.path.append('$DEVLAMA_ROOT')
 
 # Add LogLama directory
-loglama_dir = os.path.join('$PYLAMA_ROOT', 'loglama')
+loglama_dir = os.path.join('$DEVLAMA_ROOT', 'loglama')
 sys.path.append(loglama_dir)
 
 # Import and initialize environment

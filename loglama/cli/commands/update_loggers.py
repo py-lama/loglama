@@ -72,8 +72,8 @@ def extract_component_from_message(message: str) -> Optional[str]:
         return "weblama"
     if "apilama" in message.lower() or "APILama initialized" in message:
         return "apilama"
-    if "pylama" in message.lower():
-        return "pylama"
+    if "devlama" in message.lower():
+        return "devlama"
     if "bexy" in message.lower():
         return "bexy"
     if "getllm" in message.lower():

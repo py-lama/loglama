@@ -7,7 +7,7 @@
     "duration_seconds": 12.243065
   },
   "changes": {
-    "/home/tom/github/py-lama/pylama/.env": [
+    "/home/tom/github/py-lama/devlama/.env": [
       {
         "type": "env_var",
         "old": "PYLOGS_STRUCTURED_LOGGING",
@@ -24,7 +24,7 @@
         "new": "LOGLAMA_BACKUP_COUNT"
       }
     ],
-    "/home/tom/github/py-lama/pylama/.env.example": [
+    "/home/tom/github/py-lama/devlama/.env.example": [
       {
         "type": "env_var",
         "old": "PYLOGS_STRUCTURED_LOGGING",
@@ -41,7 +41,7 @@
         "new": "LOGLAMA_BACKUP_COUNT"
       }
     ],
-    "/home/tom/github/py-lama/pylama/pylama/logging_config.py": [
+    "/home/tom/github/py-lama/devlama/devlama/logging_config.py": [
       {
         "type": "import",
         "old": "from pylogs",
@@ -128,7 +128,7 @@
         "new": "LOGLAMA_AVAILABLE"
       }
     ],
-    "/home/tom/github/py-lama/pylama/pylama/ecosystem/logging_config.py": [
+    "/home/tom/github/py-lama/devlama/devlama/ecosystem/logging_config.py": [
       {
         "type": "import",
         "old": "from pylogs",

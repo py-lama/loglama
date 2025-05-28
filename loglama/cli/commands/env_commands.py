@@ -102,7 +102,7 @@ def init(env_file, verbose, force):
                 "OLLAMA_FALLBACK_MODELS": "mistral,llama2",
                 "OLLAMA_PATH": "/usr/local/bin/ollama",
                 "MODELS_DIR": "./models",
-                "PYLAMA_DEBUG": "false",
+                "DEVLAMA_DEBUG": "false",
             }
 
             # Write the default .env file
@@ -169,7 +169,7 @@ def env(verbose):
         # Get environment variables from the OS environment
         os_env_vars = {}
         for key, value in os.environ.items():
-            if key.startswith(("LOGLAMA_", "OLLAMA_", "PYLAMA_", "MODELS_")):
+            if key.startswith(("LOGLAMA_", "OLLAMA_", "DEVLAMA_", "MODELS_")):
                 os_env_vars[key] = value
 
         # Output in table format

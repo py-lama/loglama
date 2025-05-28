@@ -26,11 +26,11 @@ set_global_context(test_name="ecosystem_logging_test", timestamp=time.time())
 
 
 @timed
-def test_pylama_logging():
+def test_devlama_logging():
     """Test logging from PyLama component."""
-    info("Testing PyLama logging", logger_name="pylama.test")
-    debug("Debug message from PyLama", logger_name="pylama.test")
-    warning("Warning message from PyLama", logger_name="pylama.test")
+    info("Testing PyLama logging", logger_name="devlama.test")
+    debug("Debug message from PyLama", logger_name="devlama.test")
+    warning("Warning message from PyLama", logger_name="devlama.test")
     time.sleep(0.5)  # Simulate some work
     return "PyLama logging test completed"
 
@@ -61,8 +61,8 @@ def main():
     info("Starting ecosystem logging test")
     
     # Test logging from different components
-    pylama_result = test_pylama_logging()
-    info(f"PyLama test result: {pylama_result}")
+    devlama_result = test_devlama_logging()
+    info(f"PyLama test result: {devlama_result}")
     
     apilama_result = test_apilama_logging()
     info(f"APILama test result: {apilama_result}")

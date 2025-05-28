@@ -28,7 +28,7 @@ console = get_console()
 @click.command()
 @click.argument(
     "project",
-    type=click.Choice(["loglama", "pylama", "getllm", "bexy", "weblama"]),
+    type=click.Choice(["loglama", "devlama", "getllm", "bexy", "weblama"]),
 )
 @click.option(
     "--install/--no-install",
@@ -83,7 +83,7 @@ def check_deps(project, install, verbose):
 @click.command()
 @click.argument(
     "project",
-    type=click.Choice(["loglama", "pylama", "getllm", "bexy", "weblama"]),
+    type=click.Choice(["loglama", "devlama", "getllm", "bexy", "weblama"]),
 )
 @click.option(
     "--verbose/--no-verbose", default=True, help="Show verbose output"
@@ -117,7 +117,7 @@ def test(project, verbose):
 @click.command()
 @click.argument(
     "project",
-    type=click.Choice(["loglama", "pylama", "getllm", "bexy", "weblama"]),
+    type=click.Choice(["loglama", "devlama", "getllm", "bexy", "weblama"]),
 )
 @click.option(
     "--check-deps/--no-check-deps",
@@ -195,12 +195,12 @@ def start(project, check_deps, install_deps, verbose, args):
     "--verbose/--no-verbose", default=True, help="Show verbose output"
 )
 @click.option("--loglama/--no-loglama", default=True, help="Start LogLama")
-@click.option("--pylama/--no-pylama", default=True, help="Start PyLama")
+@click.option("--devlama/--no-devlama", default=True, help="Start PyLama")
 @click.option("--getllm/--no-getllm", default=True, help="Start PyLLM")
 @click.option("--bexy/--no-bexy", default=True, help="Start BEXY")
 @click.option("--weblama/--no-weblama", default=True, help="Start WebLama")
 def start_all(
-    check_deps, install_deps, verbose, loglama, pylama, getllm, bexy, weblama
+    check_deps, install_deps, verbose, loglama, devlama, getllm, bexy, weblama
 ):
     """Start all PyLama ecosystem services."""
     # Initialize CLI logger
@@ -217,8 +217,8 @@ def start_all(
         services = []
         if loglama:
             services.append("loglama")
-        if pylama:
-            services.append("pylama")
+        if devlama:
+            services.append("devlama")
         if getllm:
             services.append("getllm")
         if bexy:

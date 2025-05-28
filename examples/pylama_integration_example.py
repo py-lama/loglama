@@ -41,7 +41,7 @@ ensure_required_env_vars()
 setup_logging()
 
 # Get a logger for this script
-logger = get_logger("pylama_integration")
+logger = get_logger("devlama_integration")
 
 
 def check_dependencies():

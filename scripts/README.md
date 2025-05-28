@@ -48,7 +48,7 @@ Component Status:
 apilama         | ✅ Fully integrated
 bexy           | ✅ Fully integrated
 getllm           | ✅ Fully integrated
-pylama          | ✅ Fully integrated
+devlama          | ✅ Fully integrated
 shellama        | ✅ Fully integrated
 weblama         | ✅ Fully integrated
 ```

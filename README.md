@@ -62,7 +62,7 @@ loglama/
 │   ├── bash_example.sh
 │   ├── basic_python_example.py
 │   ├── multilanguage_examples.py
-│   ├── pylama_integration_example.py
+│   ├── devlama_integration_example.py
 │   ├── simple_bash_example.sh
 │   └── ...
 ├── loglama/
@@ -191,7 +191,7 @@ docker compose down -v
 | Unit/Integration Tests      | [`pytest tests/`](tests/)                                                                                                        |
 | Auto-diagnostics/Repair     | `python -m loglama.cli.main diagnose`                                                                                            |
 | Health Checks/Reports       | `python -m loglama.cli.main stats`                                                                                               |
-| Integration Scripts         | [`python examples/pylama_integration_example.py`](examples/pylama_integration_example.py)                                         |
+| Integration Scripts         | [`python examples/devlama_integration_example.py`](examples/devlama_integration_example.py)                                         |
 | Cluster/K8s Support         | [`kubectl apply -f k8s/loglama-deployment.yaml`](k8s/loglama-deployment.yaml)                                                    |
 | Grafana/Loki Integration    | [`docker-compose -f examples/loglama-grafana/docker-compose.yml up`](examples/loglama-grafana/docker-compose.yml)                |
 | Prometheus Integration      | (See [Prometheus integration guide](ECOSYSTEM_INTEGRATION.md))                                                                   |
@@ -328,7 +328,7 @@ LogLama provides a comprehensive set of features for centralized logging, enviro
 ### Centralized Environment Management
 
 - **Primary Service**: Starts first and ensures all components have the correct configuration
-- **Centralized Configuration**: Single `.env` file in the `pylama` directory used by all components
+- **Centralized Configuration**: Single `.env` file in the `devlama` directory used by all components
 - **Dependency Validation**: Checks and installs dependencies before starting services
 - **Service Orchestration**: Starts all services in the correct order with proper configuration
 - **Environment Validation**: Ensures all required environment variables are set with proper values
@@ -388,7 +388,7 @@ graph TB
         
         subgraph "PyLama Core"
             PL[Core Engine] --> PL_LOG[Logging Module]
-            PL_LOG --> PL_FILE[pylama.log]
+            PL_LOG --> PL_FILE[devlama.log]
         end
         
         subgraph "BEXY"

@@ -84,7 +84,7 @@ graph TB
 |  |     PyLama       |  |      BEXY       |  |
 |  +------------------+  +------------------+  |
 |  | - logging_config |  | - logging_config |  |
-|  | - pylama.log     |  | - bexy.log      |  |
+|  | - devlama.log     |  | - bexy.log      |  |
 |  +------------------+  +------------------+  |
 |                                              |
 |  +------------------+  +------------------+  |
@@ -238,7 +238,7 @@ sequenceDiagram
     participant LogLama as LogLama
     participant Services as Usu0142ugi PyLama
     
-    User->>CLI: pylama start-all
+    User->>CLI: devlama start-all
     CLI->>LogLama: Uruchom LogLama
     Note over LogLama: Walidacja u015brodowiska
     Note over LogLama: Sprawdzenie zaleu017cnou015bci

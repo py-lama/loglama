@@ -29,7 +29,7 @@ COMPONENT_LOG_PATHS = {
     "apilama": {"db_path": "logs/apilama.db", "log_path": "logs/apilama.log"},
     "bexy": {"db_path": "logs/bexy.db", "log_path": "logs/bexy.log"},
     "getllm": {"db_path": "logs/getllm.db", "log_path": "logs/getllm.log"},
-    "pylama": {"db_path": "logs/pylama.db", "log_path": "logs/pylama.log"},
+    "devlama": {"db_path": "logs/devlama.db", "log_path": "logs/devlama.log"},
 }
 
 

@@ -31,10 +31,10 @@ chmod +x bash_example.sh
 
 ### PyLama Integration Example
 
-The `pylama_integration_example.py` script demonstrates how to use LogLama in a script that interacts with other PyLama components like PyLLM and BEXY. It shows how to leverage the centralized environment system to access shared configuration and dependencies.
+The `devlama_integration_example.py` script demonstrates how to use LogLama in a script that interacts with other PyLama components like PyLLM and BEXY. It shows how to leverage the centralized environment system to access shared configuration and dependencies.
 
 ```bash
-python pylama_integration_example.py
+python devlama_integration_example.py
 ```
 
 ## Multi-Component Workflow Example
@@ -129,7 +129,7 @@ To use LogLama from a Bash script, you can use the following pattern:
 #!/bin/bash
 
 # Set the path to the PyLama root directory
-PYLAMA_ROOT="/path/to/py-lama"
+DEVLAMA_ROOT="/path/to/py-lama"
 
 # Function to log a message using LogLama
 log_message() {
@@ -138,12 +138,12 @@ log_message() {
     local component="${3:-bash_script}"
     
     # Use Python to call LogLama's logger
-    python3 -c "import sys; sys.path.append('$PYLAMA_ROOT'); from loglama.core.logger import get_logger; logger = get_logger('$component'); logger.$level('$message')" 
+    python3 -c "import sys; sys.path.append('$DEVLAMA_ROOT'); from loglama.core.logger import get_logger; logger = get_logger('$component'); logger.$level('$message')" 
 }
 
 # Initialize LogLama environment
 initialize_loglama() {
-    python3 -c "import sys; sys.path.append('$PYLAMA_ROOT'); from loglama.core.env_manager import load_central_env; load_central_env()"
+    python3 -c "import sys; sys.path.append('$DEVLAMA_ROOT'); from loglama.core.env_manager import load_central_env; load_central_env()"
 }
 
 # Initialize LogLama

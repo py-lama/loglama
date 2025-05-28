@@ -174,33 +174,33 @@ CLI PyLama udostępnia następujące komendy do zarządzania logami:
 
 ```bash
 # Przeglądaj logi z filtrowaniem
-pylama logs --service weblama --level info --limit 50
+devlama logs --service weblama --level info --limit 50
 
 # Przeglądaj logi ze wszystkich usług
-pylama logs --service all
+devlama logs --service all
 ```
 
 ### Zbieranie logów
 
 ```bash
 # Zbieraj logi z określonej usługi
-pylama collect-logs --services weblama
+devlama collect-logs --services weblama
 
 # Zbieraj logi ze wszystkich usług
-pylama collect-logs
+devlama collect-logs
 ```
 
 ### Zarządzanie kolektorem logów
 
 ```bash
 # Uruchom daemon kolektora logów
-pylama log-collector start --interval 300
+devlama log-collector start --interval 300
 
 # Sprawdź status kolektora logów
-pylama log-collector status
+devlama log-collector status
 
 # Zatrzymaj daemon kolektora logów
-pylama log-collector stop
+devlama log-collector stop
 ```
 
 ## Punkty integracji
@@ -225,9 +225,9 @@ APILama integruje się z systemem logowania w następujących punktach:
 
 PyLama integruje się z systemem logowania w następujących punktach:
 
-1. **Konfiguracja logowania**: `pylama/pylama/logging_config.py`
-2. **Logowanie modeli**: `pylama/pylama/models.py`
-3. **Przechowywanie logów**: `logs/pylama.log`
+1. **Konfiguracja logowania**: `devlama/devlama/logging_config.py`
+2. **Logowanie modeli**: `devlama/devlama/models.py`
+3. **Przechowywanie logów**: `logs/devlama.log`
 
 ### BEXY
 
@@ -262,11 +262,11 @@ Jeśli kolektor logów nie działa prawidłowo:
 
 ```bash
 # Sprawdź status kolektora
-pylama log-collector status
+devlama log-collector status
 
 # Zatrzymaj i uruchom ponownie kolektor
-pylama log-collector stop
-pylama log-collector start --interval 300
+devlama log-collector stop
+devlama log-collector start --interval 300
 
 # Sprawdź logi kolektora
 cat logs/log_collector.log

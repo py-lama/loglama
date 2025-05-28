@@ -561,7 +561,7 @@ setup(
     name="loglama-grafana",
     version="0.1.0",
     author="PyLama Team",
-    author_email="pylama@example.com",
+    author_email="devlama@example.com",
     description="LogLama integration with Grafana",
     long_description=long_description,
     long_description_content_type="text/markdown",

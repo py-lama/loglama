@@ -42,7 +42,7 @@ graph TB
         
         subgraph "PyLLM"
             PLLM[LLM Interface] --> PLLM_LOG[Logging Module]
-            PLLM_LOG --> PLLM_FILE[pyllm.log]
+            PLLM_LOG --> PLLM_FILE[getllm.log]
         end
         
         %% Environment Management

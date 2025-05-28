@@ -49,11 +49,11 @@ def check_dependencies():
     logger.info("Checking dependencies for PyLLM and BEXY...")
     
     # Check PyLLM dependencies
-    pyllm_success, pyllm_missing, _ = check_project_dependencies("pyllm")
-    if pyllm_success:
+    getllm_success, getllm_missing, _ = check_project_dependencies("getllm")
+    if getllm_success:
         logger.info("PyLLM dependencies are satisfied")
     else:
-        logger.warning(f"Missing PyLLM dependencies: {pyllm_missing}")
+        logger.warning(f"Missing PyLLM dependencies: {getllm_missing}")
     
     # Check BEXY dependencies
     bexy_success, bexy_missing, _ = check_project_dependencies("bexy")
@@ -62,17 +62,17 @@ def check_dependencies():
     else:
         logger.warning(f"Missing BEXY dependencies: {bexy_missing}")
     
-    return pyllm_success and bexy_success
+    return getllm_success and bexy_success
 
 
-def import_pyllm():
+def import_getllm():
     """Import PyLLM modules."""
     try:
         # Add PyLLM to the path
-        pyllm_path = get_project_path("pyllm")
-        if pyllm_path:
-            sys.path.append(str(pyllm_path))
-            from pyllm.models import get_default_model, get_models
+        getllm_path = get_project_path("getllm")
+        if getllm_path:
+            sys.path.append(str(getllm_path))
+            from getllm.models import get_default_model, get_models
             
             default_model = get_default_model()
             models = get_models()
@@ -99,10 +99,10 @@ def main():
         logger.warning("Some dependencies are missing. Results may be limited.")
     
     # Try to import and use PyLLM
-    pyllm_ok = import_pyllm()
+    getllm_ok = import_getllm()
     
     # Log the results
-    if pyllm_ok:
+    if getllm_ok:
         logger.info("Successfully integrated with PyLLM")
     else:
         logger.error("Failed to integrate with PyLLM")

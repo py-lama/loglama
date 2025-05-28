@@ -91,7 +91,7 @@ graph TB
 |  |      PyLLM       |  |     LogLama      |  |
 |  +------------------+  +------------------+  |
 |  | - logging_config |  | - log_collector  |  |
-|  | - pyllm.log      |  | - web_interface  |  |
+|  | - getllm.log      |  | - web_interface  |  |
 |  +------------------+  | - cli_commands   |  |
 |                        | - loglama.db     |  |
 |                        +------------------+  |

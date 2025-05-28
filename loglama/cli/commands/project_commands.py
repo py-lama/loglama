@@ -28,7 +28,7 @@ console = get_console()
 @click.command()
 @click.argument(
     "project",
-    type=click.Choice(["loglama", "pylama", "pyllm", "bexy", "weblama"]),
+    type=click.Choice(["loglama", "pylama", "getllm", "bexy", "weblama"]),
 )
 @click.option(
     "--install/--no-install",
@@ -83,7 +83,7 @@ def check_deps(project, install, verbose):
 @click.command()
 @click.argument(
     "project",
-    type=click.Choice(["loglama", "pylama", "pyllm", "bexy", "weblama"]),
+    type=click.Choice(["loglama", "pylama", "getllm", "bexy", "weblama"]),
 )
 @click.option(
     "--verbose/--no-verbose", default=True, help="Show verbose output"
@@ -117,7 +117,7 @@ def test(project, verbose):
 @click.command()
 @click.argument(
     "project",
-    type=click.Choice(["loglama", "pylama", "pyllm", "bexy", "weblama"]),
+    type=click.Choice(["loglama", "pylama", "getllm", "bexy", "weblama"]),
 )
 @click.option(
     "--check-deps/--no-check-deps",
@@ -196,11 +196,11 @@ def start(project, check_deps, install_deps, verbose, args):
 )
 @click.option("--loglama/--no-loglama", default=True, help="Start LogLama")
 @click.option("--pylama/--no-pylama", default=True, help="Start PyLama")
-@click.option("--pyllm/--no-pyllm", default=True, help="Start PyLLM")
+@click.option("--getllm/--no-getllm", default=True, help="Start PyLLM")
 @click.option("--bexy/--no-bexy", default=True, help="Start BEXY")
 @click.option("--weblama/--no-weblama", default=True, help="Start WebLama")
 def start_all(
-    check_deps, install_deps, verbose, loglama, pylama, pyllm, bexy, weblama
+    check_deps, install_deps, verbose, loglama, pylama, getllm, bexy, weblama
 ):
     """Start all PyLama ecosystem services."""
     # Initialize CLI logger
@@ -219,8 +219,8 @@ def start_all(
             services.append("loglama")
         if pylama:
             services.append("pylama")
-        if pyllm:
-            services.append("pyllm")
+        if getllm:
+            services.append("getllm")
         if bexy:
             services.append("bexy")
         if weblama:

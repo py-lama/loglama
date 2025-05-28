@@ -23,13 +23,13 @@ from loglama.core.env_manager import (
 # Try to import PyLLM modules
 try:
     # Add PyLLM to the path
-    pyllm_path = get_project_path("pyllm")
-    if pyllm_path:
-        sys.path.append(str(pyllm_path))
-    from pyllm.models import get_default_model, get_models_dir
-    PYLLM_AVAILABLE = True
+    getllm_path = get_project_path("getllm")
+    if getllm_path:
+        sys.path.append(str(getllm_path))
+    from getllm.models import get_default_model, get_models_dir
+    GETLLM_AVAILABLE = True
 except ImportError:
-    PYLLM_AVAILABLE = False
+    GETLLM_AVAILABLE = False
 
 # Try to import BEXY modules
 try:
@@ -98,11 +98,11 @@ def test_required_env_vars():
     return True
 
 
-def test_pyllm_integration():
+def test_getllm_integration():
     """
     Test that PyLLM can access the centralized environment variables.
     """
-    if not PYLLM_AVAILABLE:
+    if not GETLLM_AVAILABLE:
         print("PyLLM not available, skipping test")
         return True
     
@@ -147,7 +147,7 @@ def run_all_tests():
         test_central_env_path,
         test_load_central_env,
         test_required_env_vars,
-        test_pyllm_integration,
+        test_getllm_integration,
         test_env_vars_consistency
     ]
     

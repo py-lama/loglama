@@ -82,7 +82,7 @@ _required_env_vars: Dict[str, Set[str]] = {
         "MODELS_DIR",
         "DEBUG_MODE",
     },
-    "pyllm": {"OLLAMA_MODEL", "MODELS_DIR"},
+    "getllm": {"OLLAMA_MODEL", "MODELS_DIR"},
     "bexy": {"PYTHON_PATH"},
 }
 
@@ -115,7 +115,7 @@ def find_pylama_root() -> Path:
         ).exists():
             return current_dir
         if (current_dir / "pylama").exists() and (
-            current_dir / "pyllm"
+            current_dir / "getllm"
         ).exists():
             return current_dir
 
@@ -134,7 +134,7 @@ def get_project_path(project_name: str) -> Optional[Path]:
     Get the path to a specific project within the PyLama ecosystem.
 
     Args:
-        project_name: The name of the project (e.g., "loglama", "pylama", "pyllm", "bexy")
+        project_name: The name of the project (e.g., "loglama", "pylama", "getllm", "bexy")
 
     Returns:
         Path to the project directory, or None if not found.
@@ -623,8 +623,8 @@ def start_project(
         cmd = [sys.executable, "pylama.py"]
         if args:
             cmd.extend(args)
-    elif project_name == "pyllm":
-        cmd = [sys.executable, "-m", "pyllm.cli"]
+    elif project_name == "getllm":
+        cmd = [sys.executable, "-m", "getllm.cli"]
         if args:
             cmd.extend(args)
     elif project_name == "bexy":

@@ -241,9 +241,9 @@ BEXY integruje się z systemem logowania w następujących punktach:
 
 PyLLM integruje się z systemem logowania w następujących punktach:
 
-1. **Konfiguracja logowania**: `pyllm/pyllm/logging_config.py`
-2. **Logowanie operacji LLM**: `pyllm/pyllm/models.py`
-3. **Przechowywanie logów**: `logs/pyllm.log`
+1. **Konfiguracja logowania**: `getllm/getllm/logging_config.py`
+2. **Logowanie operacji LLM**: `getllm/getllm/models.py`
+3. **Przechowywanie logów**: `logs/getllm.log`
 
 ## Rozwiązywanie problemów
 

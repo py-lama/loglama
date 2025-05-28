@@ -32,15 +32,15 @@ logger = get_logger("model_inference")
 # Try to import PyLLM modules
 try:
     # Add PyLLM to the path
-    pyllm_path = get_project_path("pyllm")
-    if pyllm_path:
-        sys.path.append(str(pyllm_path))
-        from pyllm.models import get_default_model
-        PYLLM_AVAILABLE = True
+    getllm_path = get_project_path("getllm")
+    if getllm_path:
+        sys.path.append(str(getllm_path))
+        from getllm.models import get_default_model
+        GETLLM_AVAILABLE = True
         logger.info(f"PyLLM available, default model: {get_default_model()}")
 except ImportError as e:
     logger.warning(f"PyLLM not available: {e}")
-    PYLLM_AVAILABLE = False
+    GETLLM_AVAILABLE = False
 
 
 def find_latest_processed_file():
@@ -106,7 +106,7 @@ def simulate_model_inference(data):
                     })
             
             # If PyLLM is available, add a summary using the model
-            if PYLLM_AVAILABLE:
+            if GETLLM_AVAILABLE:
                 logger.info("Generating summary using PyLLM")
                 # This is a simulation of using PyLLM
                 summary = f"Analysis of {len(statistics)} data sources completed with an average confidence of 0.75."

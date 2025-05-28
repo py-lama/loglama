@@ -361,7 +361,7 @@
         "new": "LOGLAMA_AVAILABLE"
       }
     ],
-    "/home/tom/github/py-lama/pyllm/.env": [
+    "/home/tom/github/py-lama/getllm/.env": [
       {
         "type": "env_var",
         "old": "PYLOGS_STRUCTURED_LOGGING",
@@ -378,7 +378,7 @@
         "new": "LOGLAMA_BACKUP_COUNT"
       }
     ],
-    "/home/tom/github/py-lama/pyllm/.env.example": [
+    "/home/tom/github/py-lama/getllm/.env.example": [
       {
         "type": "env_var",
         "old": "PYLOGS_STRUCTURED_LOGGING",
@@ -395,7 +395,7 @@
         "new": "LOGLAMA_BACKUP_COUNT"
       }
     ],
-    "/home/tom/github/py-lama/pyllm/pyllm/logging_config.py": [
+    "/home/tom/github/py-lama/getllm/getllm/logging_config.py": [
       {
         "type": "import",
         "old": "from pylogs",

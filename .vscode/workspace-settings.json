@@ -1,0 +1,42 @@
+{
+  "folders": [
+    {
+      "name": "Root",
+      "path": "."
+    },
+    {
+      "name": "Source",
+      "path": "./src"
+    },
+    {
+      "name": "Tests",
+      "path": "./tests"
+    },
+    {
+      "name": "Documentation",
+      "path": "./docs"
+    }
+  ],
+  "settings": {
+    "typescript.preferences.includePackageJsonAutoImports": "on",
+    "typescript.suggest.autoImports": true,
+    "editor.minimap.enabled": true,
+    "editor.minimap.maxColumn": 200,
+    "workbench.colorCustomizations": {
+      "editorRuler.foreground": "#ff6b6b50"
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-vscode.vscode-typescript-next",
+      "esbenp.prettier-vscode",
+      "ms-vscode.vscode-eslint",
+      "orta.vscode-jest",
+      "usernamehw.errorlens",
+      "kisstkondoros.vscode-codemetrics",
+      "streetsidesoftware.code-spell-checker",
+      "christian-kohler.path-intellisense",
+      "bradlc.vscode-tailwindcss"
+    ]
+  }
+}

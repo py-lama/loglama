@@ -1,0 +1,71 @@
+{
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.organizeImports": true,
+    "source.removeUnusedImports": true,
+    "source.addMissingImports": true
+  },
+  "editor.rulers": [200],
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.wordWrapColumn": 200,
+  "problems.decorations.enabled": true,
+  "editor.showUnused": true,
+  "editor.showDeprecated": true,
+  "eslint.enable": true,
+  "eslint.run": "onType",
+  "eslint.format.enable": true,
+  "eslint.codeAction.showDocumentation": {
+    "enable": true
+  },
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "prettier.enable": true,
+  "prettier.requireConfig": true,
+  "typescript.preferences.includePackageJsonAutoImports": "on",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.suggest.autoImports": true,
+  "typescript.inlayHints.enabled": "on",
+  "files.autoSave": "onFocusChange",
+  "git.enableCommitSigning": true,
+  "git.autofetch": true,
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/coverage": true,
+    "**/.git": true
+  },
+  "jest.autoRun": {
+    "watch": true,
+    "onSave": "test-src-file"
+  },
+  "todohighlight.keywords": [
+    {
+      "text": "TODO:",
+      "color": "#ff6b6b",
+      "backgroundColor": "rgba(255, 107, 107, 0.1)"
+    },
+    {
+      "text": "FIXME:",
+      "color": "#ffa500",
+      "backgroundColor": "rgba(255, 165, 0, 0.1)"
+    }
+  ],
+  "errorLens.enabledDiagnosticLevels": ["error", "warning"],
+  "errorLens.fontStyleItalic": true,
+  "codeMetrics.basics.ComplexityLevelNormal": 8,
+  "codeMetrics.basics.ComplexityLevelWarning": 12,
+  "codeMetrics.basics.ComplexityLevelError": 20,
+  "extensions.recommendations": [
+    "ms-vscode.vscode-typescript-next",
+    "esbenp.prettier-vscode",
+    "ms-vscode.vscode-eslint",
+    "orta.vscode-jest",
+    "ms-vscode.vscode-docker",
+    "redhat.vscode-yaml",
+    "usernamehw.errorlens",
+    "kisstkondoros.vscode-codemetrics",
+    "streetsidesoftware.code-spell-checker"
+  ]
+}
